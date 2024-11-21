@@ -1,4 +1,6 @@
+const express = require('express');
 const posts = require('../note/posts.js')
+let lastIndex = posts.at(-1).id
 
 //METTO LE FUNZIONI 
 
