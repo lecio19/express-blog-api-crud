@@ -12,6 +12,8 @@ const app = express();
 const port = 3000;
 const posts = require('./note/posts.js')
 const router = require('./routers/posts.js')
+const endpointError = require('./middlewares/endpoint.js')
+const error = require('./middlewares/errors.js')
 
 app.use(express.static('public'));
 
@@ -34,6 +36,10 @@ app.get('/routers/posts', (req, res) =>{
 })*/
 
 app.use('/posts', router)
+
+app.use(express.json())
+app.use (endpointError)
+app.use(error)
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
